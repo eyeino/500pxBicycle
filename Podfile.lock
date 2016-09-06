@@ -1,35 +1,23 @@
 PODS:
   - Alamofire (3.4.1)
   - Freddy (2.1.0)
-  - RBQFetchedResultsController (4.0.4):
-    - Realm (>= 1.0.0)
   - Realm (1.0.2):
     - Realm/Headers (= 1.0.2)
   - Realm/Headers (1.0.2)
-  - RealmGridController (1.5):
-    - RealmSwift (>= 0.100.0)
-    - SwiftFetchedResultsController (>= 4.0.3)
   - RealmSwift (1.0.2):
     - Realm (= 1.0.2)
-  - SwiftFetchedResultsController (4.0.4):
-    - RBQFetchedResultsController (>= 4.0.4)
-    - RealmSwift (>= 1.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - Freddy
-  - RealmGridController
   - RealmSwift
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   Freddy: bbdca013977db29638b24baf6572ce94452bec29
-  RBQFetchedResultsController: 56494d69fef1e47f9f70c3adcf1317d7b2e3d71c
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmGridController: b8e222a1240a657e69e86b96ef58ab1f5398fb6b
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
-  SwiftFetchedResultsController: 4439e56787c27a5407ab5cc4dcab339478f24284
 
-PODFILE CHECKSUM: 8f6ee2fb8ed2e7702a86cf6fc6c96554af56ee11
+PODFILE CHECKSUM: 6cd794107ca0ef1944bf71feb70f1b54874aa690
 
 COCOAPODS: 1.0.1
