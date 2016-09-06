@@ -39,3 +39,8 @@ The user should be allowed to log in... This means implementing OAuth which I ha
 
 ###Frameworks
 Should implement RealmGridController and load images into memory to improve performance of UICollectionView
+
+##Acknowledgements
+UI icons from Icons8
+App icon from illustrio
+
