@@ -72,8 +72,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-ty-qlB">
-                                                    <rect key="frame" x="65" y="57" width="37" height="37"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gqG-ty-qlB">
+                                                    <rect key="frame" x="74" y="65" width="20" height="20"/>
                                                 </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dW2-UD-ijW">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>
@@ -143,21 +143,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-3t-9TN">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
-                            </imageView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rAN-TR-fWk">
-                                <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                <rect key="frame" x="281" y="282" width="37" height="37"/>
                             </activityIndicatorView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y2s-MV-dWM">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-3t-9TN">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Ilf-3t-9TN" secondAttribute="trailing" id="6gh-xS-wiV"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ilf-3t-9TN" secondAttribute="bottom" id="eGz-YL-ugk"/>
+                                    <constraint firstItem="Ilf-3t-9TN" firstAttribute="top" secondItem="y2s-MV-dWM" secondAttribute="top" id="nHW-cl-ktI"/>
+                                    <constraint firstItem="Ilf-3t-9TN" firstAttribute="leading" secondItem="y2s-MV-dWM" secondAttribute="leading" id="yIe-Nj-f3e"/>
+                                </constraints>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Ilf-3t-9TN" secondAttribute="trailing" id="2rH-yb-LVf"/>
-                            <constraint firstItem="rAN-TR-fWk" firstAttribute="centerY" secondItem="0FI-az-coH" secondAttribute="centerY" id="3hn-BJ-ekf"/>
-                            <constraint firstItem="rAN-TR-fWk" firstAttribute="centerX" secondItem="0FI-az-coH" secondAttribute="centerX" id="ANu-9O-kly"/>
-                            <constraint firstItem="Hcp-cD-ult" firstAttribute="top" secondItem="Ilf-3t-9TN" secondAttribute="bottom" id="Vrb-Hh-X5X"/>
-                            <constraint firstItem="Ilf-3t-9TN" firstAttribute="leading" secondItem="0FI-az-coH" secondAttribute="leading" id="k0W-Ww-n4m"/>
-                            <constraint firstItem="Ilf-3t-9TN" firstAttribute="top" secondItem="KDH-Cm-9hC" secondAttribute="bottom" id="oxq-oK-3pA"/>
+                            <constraint firstItem="Hcp-cD-ult" firstAttribute="top" secondItem="y2s-MV-dWM" secondAttribute="bottom" id="KHY-di-L11"/>
+                            <constraint firstItem="y2s-MV-dWM" firstAttribute="top" secondItem="KDH-Cm-9hC" secondAttribute="bottom" id="Osa-VD-aEm"/>
+                            <constraint firstItem="rAN-TR-fWk" firstAttribute="centerX" secondItem="0FI-az-coH" secondAttribute="centerX" id="fnr-hv-oGZ"/>
+                            <constraint firstAttribute="trailing" secondItem="y2s-MV-dWM" secondAttribute="trailing" id="jND-Es-ZYd"/>
+                            <constraint firstItem="y2s-MV-dWM" firstAttribute="leading" secondItem="0FI-az-coH" secondAttribute="leading" id="kKN-ei-PyK"/>
+                            <constraint firstItem="rAN-TR-fWk" firstAttribute="centerY" secondItem="0FI-az-coH" secondAttribute="centerY" id="xKx-RF-e0f"/>
                         </constraints>
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -165,6 +176,11 @@
                     <connections>
                         <outlet property="activityIndicator" destination="rAN-TR-fWk" id="LBa-Lv-jGy"/>
                         <outlet property="imageView" destination="Ilf-3t-9TN" id="0VS-T6-oK9"/>
+                        <outlet property="imageViewBottomConstraint" destination="eGz-YL-ugk" id="dLl-01-NQx"/>
+                        <outlet property="imageViewLeadingConstraint" destination="yIe-Nj-f3e" id="eh0-ga-ENH"/>
+                        <outlet property="imageViewTopConstraint" destination="nHW-cl-ktI" id="gB8-IR-Fyn"/>
+                        <outlet property="imageViewTrailingConstraint" destination="6gh-xS-wiV" id="fg5-cE-D8L"/>
+                        <outlet property="scrollView" destination="y2s-MV-dWM" id="U0Q-RX-Wut"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcS-PA-psZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -218,8 +234,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="eZq-NF-lIa">
-                                                    <rect key="frame" x="65" y="57" width="37" height="37"/>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="eZq-NF-lIa">
+                                                    <rect key="frame" x="74" y="65" width="20" height="20"/>
                                                 </activityIndicatorView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Vg-jc-X60">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="150"/>

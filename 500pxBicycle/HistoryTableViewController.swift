@@ -25,7 +25,9 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-    
+        
+        self.tabBarController?.tabBar.hidden = false
+        
         ids = realmClient.idsWithBigImages()
         titles = realmClient.titlesWithBigImages()
         tableView.reloadData()

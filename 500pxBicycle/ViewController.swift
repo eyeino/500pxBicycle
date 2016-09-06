@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.tabBarController?.tabBar.hidden = false
+        
         client.getPostsWithFeature(feature) { (success, error) in
             if success {
                 self.posts = self.client.fivePxPosts
@@ -38,6 +40,12 @@ class ViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        
+        collectionView?.collectionViewLayout.invalidateLayout()
     }
     
     func showAlert(error: NSError) {

@@ -124,8 +124,8 @@
 			children = (
 				3C739CDE1D7E3C01001F0AB1 /* ViewController.swift */,
 				3C931AC31D7EA4A000A3C863 /* EditorsChoiceViewController.swift */,
-				3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */,
 				3C931ABF1D7E9CC400A3C863 /* HistoryTableViewController.swift */,
+				3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
