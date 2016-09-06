@@ -1,0 +1,6 @@
+framework module RealmGridController {
+  umbrella header "RealmGridController-umbrella.h"
+
+  export *
+  module * { export * }
+}

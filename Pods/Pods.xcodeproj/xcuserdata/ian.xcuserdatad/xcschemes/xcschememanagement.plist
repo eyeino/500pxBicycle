@@ -19,7 +19,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>RBQFetchedResultsController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmGridController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -29,15 +39,30 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftFetchedResultsController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0884D83FD543CFFD75D14A7E21978E68</key>
+		<key>1951A58C20D8C00CD78DD1EC69EA5BA0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D9B1CEC41582162E989A6183EFA565D</key>
+		<key>2485C1791D8DA7FFD2D1883F569FC89F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3AD78A2AAE5E388E3D8C22BC750123F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>67307BBCC100994C03A237A58554A5C4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -47,7 +72,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E9DC8747B6A6A3E6C6F9B92581B60519</key>
+		<key>C73F70C3C11DDC2F4CF532B8F5EF1C0F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DAAC8D13D3AECA8CF56D104B85B48BBB</key>
 		<dict>
 			<key>primary</key>
 			<true/>

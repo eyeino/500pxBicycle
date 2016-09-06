@@ -9,4 +9,5 @@ target '500pxBicycle' do
   pod 'Alamofire'
   pod 'Freddy'
   pod 'RealmSwift'
+  pod 'RealmGridController'
 end

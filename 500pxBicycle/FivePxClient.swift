@@ -19,7 +19,7 @@ class FivePxClient: NSObject {
         let methodParameters = [
             FivePxConstants.ParameterKeys.Feature: feature,
             FivePxConstants.ParameterKeys.ConsumerKey: FivePxConstants.ParameterValues.consumerKey,
-            FivePxConstants.ParameterKeys.ImageSize: FivePxConstants.ParameterValues.ImageSize.Square440 + "," + FivePxConstants.ParameterValues.ImageSize.LongestEdge900
+            FivePxConstants.ParameterKeys.ImageSize: FivePxConstants.ParameterValues.ImageSize.Square100 + "," + FivePxConstants.ParameterValues.ImageSize.LongestEdge900
         ]
         
         let url = FivePxURLFromParameters(methodParameters, withPathExtension: "photos")
@@ -42,8 +42,7 @@ class FivePxClient: NSObject {
                     }
                 }
             case .Failure:
-                print(response.result.error)
-                completionHandlerForGetImages(success: false, error: nil)
+                completionHandlerForGetImages(success: false, error: response.result.error)
             }
         }
     }
@@ -61,7 +60,7 @@ class FivePxClient: NSObject {
                     }
                 }
             case .Failure:
-                completionHandlerForLoadImageView(success: false, error: nil, data: nil)
+                completionHandlerForLoadImageView(success: false, error: response.result.error, data: nil)
             }
         })
     }
