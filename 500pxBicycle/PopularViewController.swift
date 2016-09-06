@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PopularViewController: UIViewController {
 
     var feature = FivePxConstants.ParameterValues.Feature.Popular
     var posts = [FivePxPost]()
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        downloadPosts()
         self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.imageWithRenderingMode(.AlwaysOriginal)
         self.tabBarItem.image = UIImage(named: "star")!.imageWithRenderingMode(.AlwaysOriginal)
     }
@@ -29,17 +29,6 @@ class ViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.hidden = false
-        
-        client.getPostsWithFeature(feature) { (success, error) in
-            if success {
-                self.posts = self.client.fivePxPosts
-                self.collectionView.reloadData()
-            } else {
-                if let error = error {
-                    self.showAlert(error)
-                }
-            }
-        }
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -58,9 +47,26 @@ class ViewController: UIViewController {
         
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    func downloadPosts() {
+        client.getPostsWithFeature(feature) { (success, error) in
+            if success {
+                self.posts = self.client.fivePxPosts
+                self.collectionView.reloadData()
+            } else {
+                if let error = error {
+                    self.showAlert(error)
+                }
+            }
+        }
+    }
+    
+    @IBAction func refreshButton(sender: UIBarButtonItem) {
+        downloadPosts()
+    }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PopularViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
@@ -81,10 +87,13 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             //no image found in realm, go download it and set it to the imageview
             cell.loadingIndicator.startAnimating()
             client.loadImageToImageViewWithURL(postImageUrl, imageView: cell.imageView) { (success, error, data) in
-                
-                //create a realm object with the image data downloaded
-                if let data = data {
-                    self.realmClient.saveThumbnailData(withId: postImageID, data: data, title: postImageTitle)
+                if success {
+                    //create a realm object with the image data downloaded
+                    if let data = data {
+                        self.realmClient.saveThumbnailData(withId: postImageID, data: data, title: postImageTitle)
+                        cell.loadingIndicator.stopAnimating()
+                    }
+                } else {
                     cell.loadingIndicator.stopAnimating()
                 }
             }
@@ -93,11 +102,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         //image retrieved from realm successfully, set imageview to it
         cell.imageView.image = image
-        
-        cell.loadingIndicator.startAnimating()
-        client.loadImageToImageViewWithURL(posts[indexPath.item].thumbnailUrl, imageView: cell.imageView, completionHandlerForLoadImageView: { (success, error, data) in
-                cell.loadingIndicator.stopAnimating()
-        })
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -111,7 +115,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 //MARK: FlowLayout Configuration
 
-extension ViewController: UICollectionViewDelegateFlowLayout {
+extension PopularViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let spacing: CGFloat = 1

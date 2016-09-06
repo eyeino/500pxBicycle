@@ -45,7 +45,7 @@
         <!--Popular-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="_00pxBicycle" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="PopularViewController" customModule="_00pxBicycle" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -122,7 +122,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Popular" image="star" id="YZJ-E8-0Ij"/>
-                    <navigationItem key="navigationItem" title="Popular" id="WDi-d0-ftt"/>
+                    <navigationItem key="navigationItem" title="Popular" id="WDi-d0-ftt">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="N18-tQ-BkJ">
+                            <connections>
+                                <action selector="refreshButton:" destination="BYZ-38-t0r" id="rTm-dw-7Ru"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="LR9-id-Klh" id="ilv-M2-CDT"/>
                     </connections>
@@ -259,8 +265,8 @@
                                             <mask key="constraints">
                                                 <exclude reference="Shi-Pa-1M4"/>
                                                 <exclude reference="V2Q-MV-KQU"/>
-                                                <exclude reference="sWq-my-SuT"/>
                                                 <exclude reference="fXq-IB-H0c"/>
+                                                <exclude reference="sWq-my-SuT"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -284,7 +290,13 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Editor's Choice" image="pen" id="lp5-zp-QGl"/>
-                    <navigationItem key="navigationItem" title="Editor's Choice" id="cjf-gT-Orc"/>
+                    <navigationItem key="navigationItem" title="Editor's Choice" id="cjf-gT-Orc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="6Gw-IU-Dq4">
+                            <connections>
+                                <action selector="refreshButton:" destination="0YT-HK-HVb" id="zS4-sA-63V"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="PqO-TE-7Be" id="MWg-fA-WLK"/>
                     </connections>
@@ -337,7 +349,7 @@
                                                     <rect key="frame" x="15" y="0.0" width="570" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>

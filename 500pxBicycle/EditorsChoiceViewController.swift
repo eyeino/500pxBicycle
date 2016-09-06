@@ -20,7 +20,7 @@ class EditorsChoiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        downloadPosts()
         self.tabBarItem.selectedImage = UIImage(named: "pen_filled")!.imageWithRenderingMode(.AlwaysOriginal)
         self.tabBarItem.image = UIImage(named: "pen")!.imageWithRenderingMode(.AlwaysOriginal)
         
@@ -30,17 +30,6 @@ class EditorsChoiceViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.tabBarController?.tabBar.hidden = false
-        
-        client.getPostsWithFeature(feature) { (success, error) in
-            if success {
-                self.posts = self.client.fivePxPosts
-                self.collectionView.reloadData()
-            } else {
-                if let error = error {
-                    self.showAlert(error)
-                }
-            }
-        }
     }
     
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -58,6 +47,23 @@ class EditorsChoiceViewController: UIViewController {
         alertController.addAction(defaultAction)
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func downloadPosts() {
+        client.getPostsWithFeature(feature) { (success, error) in
+            if success {
+                self.posts = self.client.fivePxPosts
+                self.collectionView.reloadData()
+            } else {
+                if let error = error {
+                    self.showAlert(error)
+                }
+            }
+        }
+    }
+    
+    @IBAction func refreshButton(sender: UIBarButtonItem) {
+        downloadPosts()
     }
 }
 
@@ -82,10 +88,13 @@ extension EditorsChoiceViewController: UICollectionViewDelegate, UICollectionVie
             //no image found in realm, go download it and set it to the imageview
             cell.loadingIndicator.startAnimating()
             client.loadImageToImageViewWithURL(postImageUrl, imageView: cell.imageView) { (success, error, data) in
-                
-                //create a realm object with the image data downloaded
-                if let data = data {
-                    self.realmClient.saveThumbnailData(withId: postImageID, data: data, title: postImageTitle)
+                if success {
+                    //create a realm object with the image data downloaded
+                    if let data = data {
+                        self.realmClient.saveThumbnailData(withId: postImageID, data: data, title: postImageTitle)
+                        cell.loadingIndicator.stopAnimating()
+                    }
+                } else {
                     cell.loadingIndicator.stopAnimating()
                 }
             }
@@ -94,11 +103,6 @@ extension EditorsChoiceViewController: UICollectionViewDelegate, UICollectionVie
         
         //image retrieved from realm successfully, set imageview to it
         cell.imageView.image = image
-        
-        cell.loadingIndicator.startAnimating()
-        client.loadImageToImageViewWithURL(posts[indexPath.item].thumbnailUrl, imageView: cell.imageView, completionHandlerForLoadImageView: { (success, error, data) in
-            cell.loadingIndicator.stopAnimating()
-        })
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
