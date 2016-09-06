@@ -19,6 +19,7 @@
 		3C739CFA1D7E62A4001F0AB1 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */; };
 		3C739CFC1D7E7281001F0AB1 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */; };
 		3C739CFE1D7E72C2001F0AB1 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */; };
+		3C931ABC1D7E7B8F00A3C863 /* FivePxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C931ABB1D7E7B8F00A3C863 /* FivePxImage.swift */; };
 		90516251845CA5FB4B852092 /* Pods_500pxBicycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
+		3C931ABB1D7E7B8F00A3C863 /* FivePxImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxImage.swift; sourceTree = "<group>"; };
 		857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_500pxBicycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.debug.xcconfig"; sourceTree = "<group>"; };
 		B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.release.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,11 +101,8 @@
 		3C739CEE1D7E3C19001F0AB1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */,
-				3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */,
-				3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */,
-				3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */,
-				3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */,
+				3C931ABE1D7E7BA400A3C863 /* 500px */,
+				3C931ABD1D7E7B9900A3C863 /* Realm */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -123,6 +122,26 @@
 				3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		3C931ABD1D7E7B9900A3C863 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */,
+				3C931ABB1D7E7B8F00A3C863 /* FivePxImage.swift */,
+			);
+			name = Realm;
+			sourceTree = "<group>";
+		};
+		3C931ABE1D7E7BA400A3C863 /* 500px */ = {
+			isa = PBXGroup;
+			children = (
+				3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */,
+				3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */,
+				3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */,
+				3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */,
+			);
+			name = 500px;
 			sourceTree = "<group>";
 		};
 		B404B51D80B4576B2196CF50 /* Frameworks */ = {
@@ -263,6 +282,7 @@
 				3C739CDD1D7E3C01001F0AB1 /* AppDelegate.swift in Sources */,
 				3C739CF41D7E3E74001F0AB1 /* DeveloperParameters.swift in Sources */,
 				3C739CFC1D7E7281001F0AB1 /* PhotoDetailViewController.swift in Sources */,
+				3C931ABC1D7E7B8F00A3C863 /* FivePxImage.swift in Sources */,
 				3C739CF21D7E3C49001F0AB1 /* FivePxClient.swift in Sources */,
 				3C739CFE1D7E72C2001F0AB1 /* RealmClient.swift in Sources */,
 			);

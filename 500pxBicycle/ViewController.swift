@@ -40,9 +40,17 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func configurePhotoCell(cell: CollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         cell.loadingIndicator.startAnimating()
-        client.loadImageToImageViewWithURL(posts[indexPath.item].imageUrl, imageView: cell.imageView, completionHandlerForLoadImageView: { (success, error) in
+        client.loadImageToImageViewWithURL(posts[indexPath.item].thumbnailUrl, imageView: cell.imageView, completionHandlerForLoadImageView: { (success, error, data) in
                 cell.loadingIndicator.stopAnimating()
         })
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+        
+        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoDetailViewController") as! PhotoDetailViewController
+        detailVC.post = posts[indexPath.item]
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 

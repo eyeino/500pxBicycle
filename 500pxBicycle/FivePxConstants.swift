@@ -41,6 +41,8 @@ struct FivePxConstants {
         }
         
         struct ImageSize {
+            
+            //Cropped
             static let Square70 = "1"
             static let Square140 = "2"
             static let Square280 = "3"
@@ -49,6 +51,15 @@ struct FivePxConstants {
             static let Square200 = "200"
             static let Square440 = "440"
             static let Square600 = "600"
+            
+            //Uncropped
+            static let LongestEdge256 = "30"
+            static let LongestEdge900 = "4"
+            static let LongestEdge1080 = "1080"
+            static let LongestEdge1600 = "1600"
+            static let LongestEdge2048 = "2048"
+            
+            static let Height1080 = "6"
         }
         
         static let Page = "page"

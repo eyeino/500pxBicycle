@@ -10,16 +10,27 @@ import RealmSwift
 
 class RealmClient: NSObject {
     
-    func saveImage(toID: Int) {
+    let realm = try! Realm()
+    
+    func saveImageDataWithID(id: Int, data: NSData) {
+        let newObject = FivePxImage()
+        newObject.data = data
+        newObject.id = id
         
+        try! realm.write({
+            realm.add(newObject)
+        })
     }
     
-    func isSaved() -> Bool {
-        return false
-    }
-    
-    func loadImage(fromID: Int) {
+    func getImage(fromID id: Int) -> UIImage? {
+        let dataFromObject = realm.objects(FivePxImage.self).filter("id == \(id)").first?.data
+        if let data = dataFromObject {
+            if let image = UIImage(data: data) {
+                return image
+            }
+        }
         
+        return nil
     }
     
     override init() {

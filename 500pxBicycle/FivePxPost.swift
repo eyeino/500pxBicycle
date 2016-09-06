@@ -14,6 +14,7 @@ public struct FivePxPost {
     public let id: Int
     public let name: String
     public let rating: Double
+    public let thumbnailUrl: String
     public let imageUrl: String
     public let username: String
     public let city: String?
@@ -26,7 +27,8 @@ extension FivePxPost: JSONDecodable {
         id = try value.int("id")
         name = try value.string("name")
         rating = try value.double("rating")
-        imageUrl = try value.string("images", 0, "https_url")
+        thumbnailUrl = try value.string("images", 0, "https_url")
+        imageUrl = try value.string("images", 1, "https_url")
         username = try value.string("user", "username")
         city = try value.string("user", "city")
         country = try value.string("user", "city")

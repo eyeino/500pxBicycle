@@ -19,7 +19,7 @@ class FivePxClient: NSObject {
         let methodParameters = [
             FivePxConstants.ParameterKeys.Feature: feature,
             FivePxConstants.ParameterKeys.ConsumerKey: FivePxConstants.ParameterValues.consumerKey,
-            FivePxConstants.ParameterKeys.ImageSize: FivePxConstants.ParameterValues.ImageSize.Square440
+            FivePxConstants.ParameterKeys.ImageSize: FivePxConstants.ParameterValues.ImageSize.Square440 + "," + FivePxConstants.ParameterValues.ImageSize.LongestEdge900
         ]
         
         let url = FivePxURLFromParameters(methodParameters, withPathExtension: "photos")
@@ -48,7 +48,7 @@ class FivePxClient: NSObject {
         }
     }
     
-    func loadImageToImageViewWithURL(url: URLStringConvertible, imageView: UIImageView, completionHandlerForLoadImageView: (success: Bool, error: NSError?) -> Void) {
+    func loadImageToImageViewWithURL(url: URLStringConvertible, imageView: UIImageView, completionHandlerForLoadImageView: (success: Bool, error: NSError?, data: NSData?) -> Void) {
         Alamofire.request(.GET, url)
         .validate()
         .responseData(completionHandler: { response in
@@ -57,11 +57,11 @@ class FivePxClient: NSObject {
                 if let data = response.data {
                     if let image = UIImage(data: data) {
                         imageView.image = image
-                        completionHandlerForLoadImageView(success: true, error: nil)
+                        completionHandlerForLoadImageView(success: true, error: nil, data: data)
                     }
                 }
             case .Failure:
-                completionHandlerForLoadImageView(success: false, error: nil)
+                completionHandlerForLoadImageView(success: false, error: nil, data: nil)
             }
         })
     }
