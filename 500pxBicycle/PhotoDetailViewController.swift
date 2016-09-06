@@ -70,11 +70,17 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
             //no image found in realm, go download it and set it to the imageview
             activityIndicator.startAnimating()
             fivePxClient.loadImageToImageViewWithURL(postImageUrl, imageView: imageView) { (success, error, data) in
-                
-                //create a realm object with the image data downloaded
-                if let data = data {
-                    self.realmClient.updateImageData(withId: postImageID, data: data)
-                    self.activityIndicator.stopAnimating()
+                if success {
+                    //create a realm object with the image data downloaded
+                    if let data = data {
+                        self.realmClient.updateImageData(withId: postImageID, data: data)
+                        self.activityIndicator.stopAnimating()
+                    }
+                } else {
+                    if let error = error {
+                        self.activityIndicator.stopAnimating()
+                        self.showAlert(error)
+                    }
                 }
             }
             return
@@ -82,6 +88,17 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         
         //image retrieved from realm successfully, set imageview to it
         imageView.image = image
+    }
+    
+    func showAlert(error: NSError) {
+        let localDesc = error.localizedDescription
+        
+        let alertController = UIAlertController(title: "Error", message: localDesc, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     private func updateMinZoomScaleForSize(size: CGSize) {
