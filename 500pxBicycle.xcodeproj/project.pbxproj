@@ -12,6 +12,14 @@
 		3C739CE21D7E3C01001F0AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C739CE01D7E3C01001F0AB1 /* Main.storyboard */; };
 		3C739CE41D7E3C01001F0AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C739CE31D7E3C01001F0AB1 /* Assets.xcassets */; };
 		3C739CE71D7E3C01001F0AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C739CE51D7E3C01001F0AB1 /* LaunchScreen.storyboard */; };
+		3C739CF21D7E3C49001F0AB1 /* FivePxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */; };
+		3C739CF41D7E3E74001F0AB1 /* DeveloperParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */; };
+		3C739CF61D7E40CD001F0AB1 /* FivePxConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */; };
+		3C739CF81D7E4B68001F0AB1 /* FivePxPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */; };
+		3C739CFA1D7E62A4001F0AB1 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */; };
+		3C739CFC1D7E7281001F0AB1 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */; };
+		3C739CFE1D7E72C2001F0AB1 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */; };
+		90516251845CA5FB4B852092 /* Pods_500pxBicycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,16 @@
 		3C739CE31D7E3C01001F0AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3C739CE61D7E3C01001F0AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C739CE81D7E3C01001F0AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxClient.swift; sourceTree = "<group>"; };
+		3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperParameters.swift; sourceTree = "<group>"; };
+		3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxConstants.swift; sourceTree = "<group>"; };
+		3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxPost.swift; sourceTree = "<group>"; };
+		3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
+		857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_500pxBicycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.debug.xcconfig"; sourceTree = "<group>"; };
+		B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.release.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +47,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90516251845CA5FB4B852092 /* Pods_500pxBicycle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		068FE11AB3053387CF42A2CB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */,
+				B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		3C739CD01D7E3C01001F0AB1 = {
 			isa = PBXGroup;
 			children = (
 				3C739CDB1D7E3C01001F0AB1 /* 500pxBicycle */,
 				3C739CDA1D7E3C01001F0AB1 /* Products */,
+				068FE11AB3053387CF42A2CB /* Pods */,
+				B404B51D80B4576B2196CF50 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +84,53 @@
 		3C739CDB1D7E3C01001F0AB1 /* 500pxBicycle */ = {
 			isa = PBXGroup;
 			children = (
+				3C739CEE1D7E3C19001F0AB1 /* Model */,
+				3C739CEF1D7E3C22001F0AB1 /* View */,
+				3C739CF01D7E3C30001F0AB1 /* Controller */,
 				3C739CDC1D7E3C01001F0AB1 /* AppDelegate.swift */,
-				3C739CDE1D7E3C01001F0AB1 /* ViewController.swift */,
 				3C739CE01D7E3C01001F0AB1 /* Main.storyboard */,
 				3C739CE31D7E3C01001F0AB1 /* Assets.xcassets */,
 				3C739CE51D7E3C01001F0AB1 /* LaunchScreen.storyboard */,
 				3C739CE81D7E3C01001F0AB1 /* Info.plist */,
 			);
 			path = 500pxBicycle;
+			sourceTree = "<group>";
+		};
+		3C739CEE1D7E3C19001F0AB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */,
+				3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */,
+				3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */,
+				3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */,
+				3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3C739CEF1D7E3C22001F0AB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		3C739CF01D7E3C30001F0AB1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				3C739CDE1D7E3C01001F0AB1 /* ViewController.swift */,
+				3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		B404B51D80B4576B2196CF50 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +140,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C739CEB1D7E3C01001F0AB1 /* Build configuration list for PBXNativeTarget "500pxBicycle" */;
 			buildPhases = (
+				63256B5A62DF9AD90932C94A /* [CP] Check Pods Manifest.lock */,
 				3C739CD51D7E3C01001F0AB1 /* Sources */,
 				3C739CD61D7E3C01001F0AB1 /* Frameworks */,
 				3C739CD71D7E3C01001F0AB1 /* Resources */,
+				639F34F65DD8DD27ED2D171D /* [CP] Embed Pods Frameworks */,
+				08150F966E5B7881541CD7FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,13 +203,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		08150F966E5B7881541CD7FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63256B5A62DF9AD90932C94A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		639F34F65DD8DD27ED2D171D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3C739CD51D7E3C01001F0AB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C739CF61D7E40CD001F0AB1 /* FivePxConstants.swift in Sources */,
+				3C739CF81D7E4B68001F0AB1 /* FivePxPost.swift in Sources */,
 				3C739CDF1D7E3C01001F0AB1 /* ViewController.swift in Sources */,
+				3C739CFA1D7E62A4001F0AB1 /* CollectionViewCell.swift in Sources */,
 				3C739CDD1D7E3C01001F0AB1 /* AppDelegate.swift in Sources */,
+				3C739CF41D7E3E74001F0AB1 /* DeveloperParameters.swift in Sources */,
+				3C739CFC1D7E7281001F0AB1 /* PhotoDetailViewController.swift in Sources */,
+				3C739CF21D7E3C49001F0AB1 /* FivePxClient.swift in Sources */,
+				3C739CFE1D7E72C2001F0AB1 /* RealmClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +375,7 @@
 		};
 		3C739CEC1D7E3C01001F0AB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = 500pxBicycle/Info.plist;
@@ -259,6 +387,7 @@
 		};
 		3C739CED1D7E3C01001F0AB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = 500pxBicycle/Info.plist;
@@ -287,6 +416,7 @@
 				3C739CED1D7E3C01001F0AB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
