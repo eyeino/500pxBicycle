@@ -114,6 +114,8 @@ extension PopularViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func configurePhotoCell(cell: CollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         
+        cell.imageView.image = nil
+        
         let postImageUrl = posts[indexPath.item].thumbnailUrl
         let postImageID = posts[indexPath.item].id
         let postImageTitle = posts[indexPath.item].name
