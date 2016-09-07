@@ -16,7 +16,7 @@ class FivePxClient: NSObject {
     var totalPages: Int?
     var totalItems: Int?
     
-    func getPostsWithFeature(feature: String, page: Int? = nil, completionHandlerForGetImages: (success: Bool, error: NSError?) -> Void) {
+    func getPostsWithFeature(feature: String, page: Int? = nil, allowNSFW: Bool, completionHandlerForGetImages: (success: Bool, error: NSError?) -> Void) {
         
         var methodParameters = [
             FivePxConstants.ParameterKeys.Feature: feature,
@@ -26,6 +26,12 @@ class FivePxClient: NSObject {
         
         if let page = page {
             methodParameters[FivePxConstants.ParameterKeys.Page] = String(page)
+        }
+        
+        if allowNSFW == false {
+            methodParameters[FivePxConstants.ParameterKeys.ExcludeCategory] = FivePxConstants.ParameterValues.Categories.Nude + "," +
+            FivePxConstants.ParameterValues.Categories.People + "," +
+            FivePxConstants.ParameterValues.Categories.Uncategorized
         }
         
         let url = FivePxURLFromParameters(methodParameters, withPathExtension: "photos")

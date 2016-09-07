@@ -26,7 +26,9 @@ struct FivePxConstants {
         static let ConsumerKey = "consumer_key"
         static let ImageSize = "image_size"
         static let Page = "page"
-        static let numberOfResults = "rpp" //cannot exceed 100
+        static let NumberOfResults = "rpp" //cannot exceed 100
+        static let ExcludeCategory = "exclude"
+        static let IncludeOnlyOfCategory = "only"
     }
     
     // MARK: Parameter Values
@@ -63,6 +65,12 @@ struct FivePxConstants {
             static let LongestEdge2048 = "2048"
             
             static let Height1080 = "6"
+        }
+        
+        struct Categories {
+            static let Nude = "4"
+            static let People = "7"
+            static let Uncategorized = "0"
         }
         //static let APIKey = "YOUR API KEY HERE" /* uncomment this and enter your API key */
         static let consumerKey = DeveloperParameters.consumerKey /* comment this out if you entered your API key above */

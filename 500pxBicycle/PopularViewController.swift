@@ -13,18 +13,23 @@ class PopularViewController: UIViewController {
 
     var feature = FivePxConstants.ParameterValues.Feature.Popular
     var posts = [FivePxPost]()
+    var nsfwMode = false
     let client = FivePxClient.sharedInstance()
     let realmClient = RealmClient.sharedInstance()
     var totalPages: Int?
     var totalItems: Int?
+    var refreshControl: UIRefreshControl?
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var selectedCellLabel: UILabel!
+    @IBOutlet weak var nsfwButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         configureDropDownMenu()
+        configureRefreshControl()
+        
         downloadPosts(1)
         self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.imageWithRenderingMode(.AlwaysOriginal)
         self.tabBarItem.image = UIImage(named: "star")!.imageWithRenderingMode(.AlwaysOriginal)
@@ -54,14 +59,19 @@ class PopularViewController: UIViewController {
     }
     
     func downloadPosts(page: Int) {
-        client.getPostsWithFeature(feature, page: page) { (success, error) in
+        nsfwButton.enabled = false
+        client.getPostsWithFeature(feature, page: page, allowNSFW: nsfwMode) { (success, error) in
             if success {
                 self.totalPages = self.client.totalPages
                 self.posts = self.client.fivePxPosts
+                self.refreshControl?.endRefreshing()
+                self.nsfwButton.enabled = true
                 self.collectionView.reloadData()
             } else {
                 if let error = error {
                     self.showAlert(error)
+                    self.nsfwButton.enabled = true
+                    self.refreshControl?.endRefreshing()
                 }
             }
         }
@@ -88,16 +98,48 @@ class PopularViewController: UIViewController {
         self.navigationItem.titleView = menuView
     }
     
-    @IBAction func refreshButton(sender: UIBarButtonItem) {
+    @IBAction func nsfwButtonTapped(sender: UIBarButtonItem) {
+        if nsfwMode {
+            nsfwMode = false
+            nsfwButton.image = UIImage(named: "restrict")
+            nsfwButton.tintColor = UIColor.grayColor()
+            let randomPage = createRandomPage()
+            downloadPosts(randomPage)
+        } else {
+            nsfwMode = true
+            nsfwButton.image = UIImage(named: "restrict_filled")
+            nsfwButton.tintColor = UIColor.redColor()
+            let randomPage = createRandomPage()
+            downloadPosts(randomPage)
+        }
+    }
+    
+    func refreshForRefreshControl() {
+        let randomPage = createRandomPage()
+        downloadPosts(randomPage)
+    }
+    
+    func configureRefreshControl() {
+        if self.refreshControl == nil {
+            let refreshControl = UIRefreshControl()
+            refreshControl.tintColor = UIColor.grayColor()
+            refreshControl.addTarget(self, action: #selector(refreshForRefreshControl), forControlEvents: UIControlEvents.ValueChanged)
+            collectionView.addSubview(refreshControl)
+            collectionView.alwaysBounceVertical = true
+            self.refreshControl = refreshControl
+        }
+    }
+    
+    func createRandomPage() -> Int {
         var randomPage = 1
         if totalPages != nil {
+            //TODO: Figure out how many pages deep 500px lets you search (like Flickr's 40 page limit), since this commented out implementation is buggy. Some pages load, some don't.
             //if let totalPages = totalPages {
             //randomPage = Int(arc4random_uniform(UInt32(totalPages))) + 1
             //}
             randomPage = Int(arc4random_uniform(UInt32(10))) + 1
         }
-        
-        downloadPosts(randomPage)
+        return randomPage
     }
 }
 

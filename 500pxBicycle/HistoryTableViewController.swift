@@ -38,8 +38,10 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tableCell")! 
-        cell.textLabel?.text = titles[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("tableCell") as! HistoryTableViewCell
+        cell.imageView?.image = nil
+        cell.titleLabel?.text = titles[indexPath.row]
+        cell.imageView?.image = realmClient.getThumbnailImage(fromID: ids[indexPath.row])
         return cell
     }
     
@@ -49,6 +51,19 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
         let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoDetailViewController") as! PhotoDetailViewController
         detailVC.id = ids[indexPath.row]
         self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.Delete) {
+            realmClient.purgeImageFromRealm(withId: ids[indexPath.row])
+            ids.removeAtIndex(indexPath.row)
+            titles.removeAtIndex(indexPath.row)
+            tableView.reloadData()
+        }
     }
     
 }
