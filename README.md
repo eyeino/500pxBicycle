@@ -5,7 +5,7 @@ Cruise through 500px on iOS
 500pxBicycle is a simple app that lets you browse 500px's most popular photos
 
 ## Setup
-Note: if you're a Udacity reviewer, this setup isn't necessary; I included my key in the submitted zip file. Just build the project after opening the workspace file.
+Note: if you're a Udacity reviewer, this setup isn't necessary; the API key is bundled with this repository (for now). Just build the project after opening the workspace file.
 
 0. Get a consumer key from 500px (account required)
 1. Clone this repository and open the workspace file in Xcode
@@ -13,7 +13,7 @@ Note: if you're a Udacity reviewer, this setup isn't necessary; I included my ke
 3. In this file, create a <code>struct</code> named <code>DeveloperParameters</code> with property <code>static let consumerKey = "your 500px consumer key here"</code>
 
 ## Usage
-Open the app, and browse through the thumbnails. If you tap on a thumbnail, you'll be able to see a high resolution version of that image. You can also pinch to zoom and swipe to pan through the image.
+Open the app, and browse through the thumbnails. If you tap on a thumbnail, you'll be able to see a high resolution version of that image. You can also pinch to zoom and swipe to pan through the image. Tap on the drop down bar at the top to switch featured photo categories like Editor's Choice, Upcoming and Highest Rated.
 
 Each time a high resolution image is viewed, it's saved to disk. To view the saved images, go to the History tab and tap on the title of the image.
 
@@ -41,6 +41,5 @@ The user should be allowed to log in... This means implementing OAuth which I ha
 Should implement RealmGridController and load images into memory to improve performance of UICollectionView
 
 ##Acknowledgements
-UI icons from Icons8
-App icon from illustrio
+UI icons from Icons8, App icon from illustrio
 
