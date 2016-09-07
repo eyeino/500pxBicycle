@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D5E92E54024A3FE4C036CA1 /* Pods_500pxBicycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C97F09BB98BB709F0507522B /* Pods_500pxBicycle.framework */; };
 		3C739CDD1D7E3C01001F0AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CDC1D7E3C01001F0AB1 /* AppDelegate.swift */; };
 		3C739CDF1D7E3C01001F0AB1 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CDE1D7E3C01001F0AB1 /* PopularViewController.swift */; };
 		3C739CE21D7E3C01001F0AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C739CE01D7E3C01001F0AB1 /* Main.storyboard */; };
 		3C739CE41D7E3C01001F0AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C739CE31D7E3C01001F0AB1 /* Assets.xcassets */; };
 		3C739CE71D7E3C01001F0AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C739CE51D7E3C01001F0AB1 /* LaunchScreen.storyboard */; };
 		3C739CF21D7E3C49001F0AB1 /* FivePxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */; };
-		3C739CF41D7E3E74001F0AB1 /* DeveloperParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */; };
 		3C739CF61D7E40CD001F0AB1 /* FivePxConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */; };
 		3C739CF81D7E4B68001F0AB1 /* FivePxPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */; };
 		3C739CFA1D7E62A4001F0AB1 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */; };
@@ -21,9 +21,21 @@
 		3C739CFE1D7E72C2001F0AB1 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */; };
 		3C931ABC1D7E7B8F00A3C863 /* FivePxImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C931ABB1D7E7B8F00A3C863 /* FivePxImage.swift */; };
 		3C931AC01D7E9CC400A3C863 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C931ABF1D7E9CC400A3C863 /* HistoryTableViewController.swift */; };
-		3C931AC41D7EA4A000A3C863 /* EditorsChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C931AC31D7EA4A000A3C863 /* EditorsChoiceViewController.swift */; };
-		90516251845CA5FB4B852092 /* Pods_500pxBicycle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */; };
+		3CF777191D7FD4EE00CAF909 /* DeveloperParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CF777181D7FD4EE00CAF909 /* DeveloperParameters.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3C08B5021D7FC2090058C89B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3C739CD91D7E3C01001F0AB1 /* 500pxBicycle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 500pxBicycle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +46,6 @@
 		3C739CE61D7E3C01001F0AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3C739CE81D7E3C01001F0AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxClient.swift; sourceTree = "<group>"; };
-		3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeveloperParameters.swift; sourceTree = "<group>"; };
 		3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxConstants.swift; sourceTree = "<group>"; };
 		3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxPost.swift; sourceTree = "<group>"; };
 		3C739CF91D7E62A4001F0AB1 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -42,10 +53,10 @@
 		3C739CFD1D7E72C2001F0AB1 /* RealmClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
 		3C931ABB1D7E7B8F00A3C863 /* FivePxImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FivePxImage.swift; sourceTree = "<group>"; };
 		3C931ABF1D7E9CC400A3C863 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
-		3C931AC31D7EA4A000A3C863 /* EditorsChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorsChoiceViewController.swift; sourceTree = "<group>"; };
-		857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_500pxBicycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.debug.xcconfig"; sourceTree = "<group>"; };
-		B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.release.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.release.xcconfig"; sourceTree = "<group>"; };
+		3CF777181D7FD4EE00CAF909 /* DeveloperParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeveloperParameters.swift; path = 500pxBicycle/DeveloperParameters.swift; sourceTree = "<group>"; };
+		67BD12D640AB6336622F6E96 /* Pods-500pxBicycle.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.release.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.release.xcconfig"; sourceTree = "<group>"; };
+		B826C4D4B8955CCE9F70DC35 /* Pods-500pxBicycle.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-500pxBicycle.debug.xcconfig"; path = "Pods/Target Support Files/Pods-500pxBicycle/Pods-500pxBicycle.debug.xcconfig"; sourceTree = "<group>"; };
+		C97F09BB98BB709F0507522B /* Pods_500pxBicycle.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_500pxBicycle.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,18 +64,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90516251845CA5FB4B852092 /* Pods_500pxBicycle.framework in Frameworks */,
+				2D5E92E54024A3FE4C036CA1 /* Pods_500pxBicycle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		068FE11AB3053387CF42A2CB /* Pods */ = {
+		0C40EA00C73DE1652A69A389 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */,
-				B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */,
+				B826C4D4B8955CCE9F70DC35 /* Pods-500pxBicycle.debug.xcconfig */,
+				67BD12D640AB6336622F6E96 /* Pods-500pxBicycle.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -72,10 +83,11 @@
 		3C739CD01D7E3C01001F0AB1 = {
 			isa = PBXGroup;
 			children = (
+				3CF777181D7FD4EE00CAF909 /* DeveloperParameters.swift */,
 				3C739CDB1D7E3C01001F0AB1 /* 500pxBicycle */,
 				3C739CDA1D7E3C01001F0AB1 /* Products */,
-				068FE11AB3053387CF42A2CB /* Pods */,
-				B404B51D80B4576B2196CF50 /* Frameworks */,
+				0C40EA00C73DE1652A69A389 /* Pods */,
+				72D8CF0B11A90D42425ADF71 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				3C739CDE1D7E3C01001F0AB1 /* PopularViewController.swift */,
-				3C931AC31D7EA4A000A3C863 /* EditorsChoiceViewController.swift */,
 				3C931ABF1D7E9CC400A3C863 /* HistoryTableViewController.swift */,
 				3C739CFB1D7E7281001F0AB1 /* PhotoDetailViewController.swift */,
 			);
@@ -143,17 +154,16 @@
 			isa = PBXGroup;
 			children = (
 				3C739CF11D7E3C49001F0AB1 /* FivePxClient.swift */,
-				3C739CF31D7E3E74001F0AB1 /* DeveloperParameters.swift */,
 				3C739CF51D7E40CD001F0AB1 /* FivePxConstants.swift */,
 				3C739CF71D7E4B68001F0AB1 /* FivePxPost.swift */,
 			);
 			name = 500px;
 			sourceTree = "<group>";
 		};
-		B404B51D80B4576B2196CF50 /* Frameworks */ = {
+		72D8CF0B11A90D42425ADF71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				857A9D326620F00DD535C2DF /* Pods_500pxBicycle.framework */,
+				C97F09BB98BB709F0507522B /* Pods_500pxBicycle.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -171,6 +181,7 @@
 				3C739CD71D7E3C01001F0AB1 /* Resources */,
 				639F34F65DD8DD27ED2D171D /* [CP] Embed Pods Frameworks */,
 				08150F966E5B7881541CD7FA /* [CP] Copy Pods Resources */,
+				3C08B5021D7FC2090058C89B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -282,16 +293,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C739CF61D7E40CD001F0AB1 /* FivePxConstants.swift in Sources */,
-				3C931AC41D7EA4A000A3C863 /* EditorsChoiceViewController.swift in Sources */,
 				3C739CF81D7E4B68001F0AB1 /* FivePxPost.swift in Sources */,
 				3C739CDF1D7E3C01001F0AB1 /* PopularViewController.swift in Sources */,
 				3C739CFA1D7E62A4001F0AB1 /* CollectionViewCell.swift in Sources */,
 				3C739CDD1D7E3C01001F0AB1 /* AppDelegate.swift in Sources */,
-				3C739CF41D7E3E74001F0AB1 /* DeveloperParameters.swift in Sources */,
 				3C739CFC1D7E7281001F0AB1 /* PhotoDetailViewController.swift in Sources */,
 				3C931ABC1D7E7B8F00A3C863 /* FivePxImage.swift in Sources */,
 				3C931AC01D7E9CC400A3C863 /* HistoryTableViewController.swift in Sources */,
 				3C739CF21D7E3C49001F0AB1 /* FivePxClient.swift in Sources */,
+				3CF777191D7FD4EE00CAF909 /* DeveloperParameters.swift in Sources */,
 				3C739CFE1D7E72C2001F0AB1 /* RealmClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,9 +413,10 @@
 		};
 		3C739CEC1D7E3C01001F0AB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 94CD3254904D47F1A051C5D5 /* Pods-500pxBicycle.debug.xcconfig */;
+			baseConfigurationReference = B826C4D4B8955CCE9F70DC35 /* Pods-500pxBicycle.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = 500pxBicycle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ian.-00pxBicycle";
@@ -415,9 +426,10 @@
 		};
 		3C739CED1D7E3C01001F0AB1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B08B7B8EF73A24A29B68637D /* Pods-500pxBicycle.release.xcconfig */;
+			baseConfigurationReference = 67BD12D640AB6336622F6E96 /* Pods-500pxBicycle.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = 500pxBicycle/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ian.-00pxBicycle";

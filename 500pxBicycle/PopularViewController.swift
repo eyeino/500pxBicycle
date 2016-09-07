@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BTNavigationDropdownMenu
 
 class PopularViewController: UIViewController {
 
@@ -14,13 +15,17 @@ class PopularViewController: UIViewController {
     var posts = [FivePxPost]()
     let client = FivePxClient.sharedInstance()
     let realmClient = RealmClient.sharedInstance()
+    var totalPages: Int?
+    var totalItems: Int?
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var selectedCellLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        downloadPosts()
+        configureDropDownMenu()
+        downloadPosts(1)
         self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.imageWithRenderingMode(.AlwaysOriginal)
         self.tabBarItem.image = UIImage(named: "star")!.imageWithRenderingMode(.AlwaysOriginal)
     }
@@ -48,9 +53,10 @@ class PopularViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func downloadPosts() {
-        client.getPostsWithFeature(feature) { (success, error) in
+    func downloadPosts(page: Int) {
+        client.getPostsWithFeature(feature, page: page) { (success, error) in
             if success {
+                self.totalPages = self.client.totalPages
                 self.posts = self.client.fivePxPosts
                 self.collectionView.reloadData()
             } else {
@@ -61,8 +67,37 @@ class PopularViewController: UIViewController {
         }
     }
     
+    func configureDropDownMenu() {
+        let items = ["Popular", "Highest Rated", "Upcoming", "Editor's Choice", "Fresh Today", "Fresh Yesterday", "Fresh Weekly"]
+        let parameter = [FivePxConstants.ParameterValues.Feature.Popular,
+                         FivePxConstants.ParameterValues.Feature.HighestRated,
+                         FivePxConstants.ParameterValues.Feature.Upcoming,
+                         FivePxConstants.ParameterValues.Feature.EditorsChoice,
+                         FivePxConstants.ParameterValues.Feature.FreshToday,
+                         FivePxConstants.ParameterValues.Feature.FreshYesterday,
+                         FivePxConstants.ParameterValues.Feature.FreshWeek]
+        
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Popular", items: items)
+        
+        menuView.didSelectItemAtIndexHandler = { [weak self] (indexPath: Int) -> () in
+            self!.feature = parameter[indexPath]
+            self!.totalPages = nil
+            self!.downloadPosts(1)
+        }
+        
+        self.navigationItem.titleView = menuView
+    }
+    
     @IBAction func refreshButton(sender: UIBarButtonItem) {
-        downloadPosts()
+        var randomPage = 1
+        if totalPages != nil {
+            //if let totalPages = totalPages {
+            //randomPage = Int(arc4random_uniform(UInt32(totalPages))) + 1
+            //}
+            randomPage = Int(arc4random_uniform(UInt32(10))) + 1
+        }
+        
+        downloadPosts(randomPage)
     }
 }
 

@@ -25,18 +25,21 @@ struct FivePxConstants {
         static let Feature = "feature"
         static let ConsumerKey = "consumer_key"
         static let ImageSize = "image_size"
+        static let Page = "page"
+        static let numberOfResults = "rpp" //cannot exceed 100
     }
     
     // MARK: Parameter Values
     struct ParameterValues {
         
         struct Feature {
+            
             static let Popular = "popular"
             static let HighestRated = "highest_rated"
             static let Upcoming = "upcoming"
             static let EditorsChoice = "editors"
             static let FreshToday = "fresh_today"
-            static let FreshYesterdat = "fresh_yesterday"
+            static let FreshYesterday = "fresh_yesterday"
             static let FreshWeek = "fresh_week"
         }
         
@@ -61,15 +64,13 @@ struct FivePxConstants {
             
             static let Height1080 = "6"
         }
-        
-        static let Page = "page"
-        static let numberOfResults = "rpp" //cannot exceed 100
         //static let APIKey = "YOUR API KEY HERE" /* uncomment this and enter your API key */
         static let consumerKey = DeveloperParameters.consumerKey /* comment this out if you entered your API key above */
     }
     
     // MARK: JSON Response Keys
     struct ResponseKeys {
+        
         static let Feature = "feature"
         static let Filters = "filters"
         static let CurrentPage = "current_page"
