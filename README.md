@@ -13,11 +13,13 @@ Note: if you're a Udacity reviewer, this setup isn't necessary; the API key is b
 3. In this file, create a <code>struct</code> named <code>DeveloperParameters</code> with property <code>static let consumerKey = "your 500px consumer key here"</code>
 
 ## Usage
-Open the app, and browse through the thumbnails. If you tap on a thumbnail, you'll be able to see a high resolution version of that image. You can also pinch to zoom and swipe to pan through the image. Tap on the drop down bar at the top to switch featured photo categories like Editor's Choice, Upcoming and Highest Rated.
+Open the app, and browse through the thumbnails. If you tap on a thumbnail, you'll be able to see a high resolution version of that image. You can also pinch to zoom and swipe to pan through the image. Tap on the drop down bar at the top to switch featured photo categories like Editor's Choice, Upcoming and Highest Rated. To get a new set of photos, drag the grid of photos down in the Featured tab to activate the refresh.
 
 Each time a high resolution image is viewed, it's saved to disk. To view the saved images, go to the History tab and tap on the title of the image.
 
-Images can be deleted when you view them individually by tapping the Delete button.
+Images can be deleted when you view them individually by tapping the Delete button, or by swiping them to the left in the History tab and tapping Delete.
+
+500px can contain (tasteful) nude photos and this app will request to exclude Nude and Uncategorized categories if Allow NSFW mode is off. Allow NSFW mode is off by default. To activate Allow NSFW mode, tap the restricted button at the top right of the Featured tab. Allow NSFW mode is on if the button is red, and off if the button is gray. This feature doesn't always work in the end, since users don't always categorize their photos as Nude or turn on the NSFW tag.
 
 ## Future features and to-do list
 ###Viewing images
