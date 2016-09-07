@@ -18,6 +18,7 @@ class PopularViewController: UIViewController {
     let realmClient = RealmClient.sharedInstance()
     var totalPages: Int?
     var totalItems: Int?
+    var currentPage: Int = 1
     var refreshControl: UIRefreshControl?
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -139,6 +140,13 @@ class PopularViewController: UIViewController {
             //}
             randomPage = Int(arc4random_uniform(UInt32(10))) + 1
         }
+        
+        //ensure the randomly generated page isn't equal to the page you already loaded
+        while currentPage == randomPage {
+            randomPage = Int(arc4random_uniform(UInt32(10))) + 1
+        }
+        
+        currentPage = randomPage
         return randomPage
     }
 }
