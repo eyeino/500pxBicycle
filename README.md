@@ -5,12 +5,12 @@ Cruise through 500px on iOS
 500pxBicycle is a simple app that lets you browse 500px's most popular photos
 
 ## Setup
-Note: if you're a Udacity reviewer, this setup isn't necessary; the API key is bundled with this repository (for now). Just build the project after opening the workspace file.
+Note: The API key included in the DeveloperParameters.swift file is not valid. You must create your own.
 
 0. Get a consumer key from 500px (account required)
 1. Clone this repository and open the workspace file in Xcode
-2. Add a Swift file named <code>DeveloperParameters.swift</code> to the project
-3. In this file, create a <code>struct</code> named <code>DeveloperParameters</code> with property <code>static let consumerKey = "your 500px consumer key here"</code>
+2. Navigate to <code>DeveloperParameters.swift</code>
+3. In this file, edit the <code>struct</code> named <code>DeveloperParameters</code> and set the <code>consumerKey</code> property to your API key.
 
 ## Usage
 Open the app, and browse through the thumbnails. If you tap on a thumbnail, you'll be able to see a high resolution version of that image. You can also pinch to zoom and swipe to pan through the image. Tap on the drop down bar at the top to switch featured photo categories like Editor's Choice, Upcoming and Highest Rated. To get a new set of photos, drag the grid of photos down in the Featured tab to activate the refresh.
