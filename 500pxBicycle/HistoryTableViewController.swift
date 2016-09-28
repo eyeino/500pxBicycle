@@ -19,49 +19,49 @@ class HistoryTableViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarItem.selectedImage = UIImage(named: "past_filled")!.imageWithRenderingMode(.AlwaysOriginal)
-        self.tabBarItem.image = UIImage(named: "past")!.imageWithRenderingMode(.AlwaysOriginal)
+        self.tabBarItem.selectedImage = UIImage(named: "past_filled")!.withRenderingMode(.alwaysOriginal)
+        self.tabBarItem.image = UIImage(named: "past")!.withRenderingMode(.alwaysOriginal)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
         
         ids = realmClient.idsWithBigImages()
         titles = realmClient.titlesWithBigImages()
         tableView.reloadData()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ids.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("tableCell") as! HistoryTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell") as! HistoryTableViewCell
         cell.imageView?.image = nil
-        cell.titleLabel?.text = titles[indexPath.row]
+        cell.titleLabel?.text = titles[(indexPath as NSIndexPath).row]
         cell.imageView?.image = realmClient.getThumbnailImage(fromID: ids[indexPath.row])
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
         
-        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoDetailViewController") as! PhotoDetailViewController
-        detailVC.id = ids[indexPath.row]
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoDetailViewController") as! PhotoDetailViewController
+        detailVC.id = ids[(indexPath as NSIndexPath).row]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if (editingStyle == UITableViewCellEditingStyle.Delete) {
-            realmClient.purgeImageFromRealm(withId: ids[indexPath.row])
-            ids.removeAtIndex(indexPath.row)
-            titles.removeAtIndex(indexPath.row)
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            realmClient.purgeImageFromRealm(withId: ids[(indexPath as NSIndexPath).row])
+            ids.remove(at: (indexPath as NSIndexPath).row)
+            titles.remove(at: (indexPath as NSIndexPath).row)
             tableView.reloadData()
         }
     }

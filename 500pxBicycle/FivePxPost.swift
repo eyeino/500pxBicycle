@@ -24,12 +24,12 @@ public struct FivePxPost {
 //JSONDecodable is a necessary protocol for Freddy (JSON parser framework)
 extension FivePxPost: JSONDecodable {
     public init(json value: JSON) throws {
-        id = try value.int("id")
-        name = try value.string("name")
+        id = try value.getInt(at: "id")
+        name = try value.getString(at: "name")
 //        rating = try value.double("rating")
-        thumbnailUrl = try value.string("images", 1, "https_url")
-        imageUrl = try value.string("images", 0, "https_url")
-        username = try value.string("user", "username")
+        thumbnailUrl = try value.getString(at: "images", 1, "https_url")
+        imageUrl = try value.getString(at: "images", 0, "https_url")
+        username = try value.getString(at: "user", "username")
 //        city = try value.string("user", "city")
 //        country = try value.string("user", "city")
     }

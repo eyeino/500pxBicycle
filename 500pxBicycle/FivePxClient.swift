@@ -16,7 +16,7 @@ class FivePxClient: NSObject {
     var totalPages: Int?
     var totalItems: Int?
     
-    func getPostsWithFeature(feature: String, page: Int? = nil, allowNSFW: Bool, completionHandlerForGetImages: (success: Bool, error: NSError?) -> Void) {
+    func getPostsWithFeature(_ feature: String, page: Int? = nil, allowNSFW: Bool, completionHandlerForGetImages: @escaping (_ success: Bool, _ error: Error?) -> Void) {
         
         var methodParameters = [
             FivePxConstants.ParameterKeys.Feature: feature,
@@ -34,111 +34,93 @@ class FivePxClient: NSObject {
             FivePxConstants.ParameterValues.Categories.Uncategorized
         }
         
-        let url = FivePxURLFromParameters(methodParameters, withPathExtension: "photos")
-        let mutableRequest = NSMutableURLRequest(URL: url)
-        mutableRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+        let url = FivePxURLFromParameters(methodParameters as [String : AnyObject], withPathExtension: "photos")
+        let mutableRequest = NSMutableURLRequest(url: url)
+        mutableRequest.cachePolicy = URLRequest.CachePolicy.reloadIgnoringCacheData
         
         setNetworkActivityIndicator(true)
         
-        Alamofire.request(.GET, mutableRequest)
+        Alamofire.request(url)
         .validate()
         .responseJSON { (response) in
             switch(response.result) {
-            case .Success:
+            case .success:
                 if let data = response.data {
                     do {
                         let json = try JSON(data: data)
-                        let posts = try json.array(FivePxConstants.ResponseKeys.Photos).map(FivePxPost.init)
-                        self.totalPages = try json.int(FivePxConstants.ResponseKeys.TotalPages)
-                        self.totalPages = try json.int(FivePxConstants.ResponseKeys.TotalItems)
+                        let posts = try json.getArray(at: FivePxConstants.ResponseKeys.Photos).map(FivePxPost.init)
+                        self.totalPages = try json.getInt(at: FivePxConstants.ResponseKeys.TotalPages)
+                        self.totalPages = try json.getInt(at: FivePxConstants.ResponseKeys.TotalItems)
                         
                         self.fivePxPosts = posts
                         self.setNetworkActivityIndicator(false)
-                        completionHandlerForGetImages(success: true, error: nil)
-                    } catch JSON.Error.IndexOutOfBounds(let badIndex) {
-                        print("Index out of bounds: \(badIndex)")
-                        self.setNetworkActivityIndicator(false)
-                        completionHandlerForGetImages(success: false, error: nil)
-                    } catch JSON.Error.KeyNotFound(let badKey) {
-                        print("Key not found: \(badKey)")
-                        self.setNetworkActivityIndicator(false)
-                        completionHandlerForGetImages(success: false, error: nil)
-                    } catch JSON.Error.UnexpectedSubscript(let badSubscript) {
-                        print("Unexpected subscript: \(badSubscript)")
-                        self.setNetworkActivityIndicator(false)
-                        completionHandlerForGetImages(success: false, error: nil)
-                    } catch JSON.Error.ValueNotConvertible(let badValue) {
-                        print("Value not convertible: \(badValue)")
-                        self.setNetworkActivityIndicator(false)
-                        completionHandlerForGetImages(success: false, error: nil)
+                        completionHandlerForGetImages(true, nil)
                     } catch {
-                        print("Error with parsing JSON... (getImages)")
-                        self.setNetworkActivityIndicator(false)
-                        completionHandlerForGetImages(success: false, error: nil)
+                        
                     }
                 }
-            case .Failure:
+            case .failure:
                 self.setNetworkActivityIndicator(false)
-                completionHandlerForGetImages(success: false, error: response.result.error)
+                completionHandlerForGetImages(false, response.result.error)
             }
         }
     }
     
-    func loadImageToImageViewWithURL(url: URLStringConvertible, imageView: UIImageView, completionHandlerForLoadImageView: (success: Bool, error: NSError?, data: NSData?) -> Void) {
+    func loadImageToImageViewWithURL(_ url: URLConvertible, imageView: UIImageView, completionHandlerForLoadImageView: @escaping (_ success: Bool, _ error: Error?, _ data: Data?) -> Void) {
         setNetworkActivityIndicator(true)
-        Alamofire.request(.GET, url)
+        Alamofire.request(url)
         .validate()
         .responseData(completionHandler: { response in
             switch(response.result) {
-            case .Success:
+            case .success:
                 if let data = response.data {
                     if let image = UIImage(data: data) {
                         imageView.image = image
                         self.setNetworkActivityIndicator(false)
-                        completionHandlerForLoadImageView(success: true, error: nil, data: data)
+                        completionHandlerForLoadImageView(true, nil, data)
                     }
                 }
                 self.setNetworkActivityIndicator(false)
-            case .Failure:
+            case .failure:
                 self.setNetworkActivityIndicator(false)
-                completionHandlerForLoadImageView(success: false, error: response.result.error, data: nil)
+                completionHandlerForLoadImageView(false, response.result.error, nil)
             }
         })
     }
 
 
     // create a URL from parameters
-    private func FivePxURLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+    fileprivate func FivePxURLFromParameters(_ parameters: [String:AnyObject], withPathExtension: String? = nil) -> URL {
         
-        let components = NSURLComponents()
+        var components = URLComponents()
         components.scheme = FivePxConstants.General.APIScheme
         components.host = FivePxConstants.General.APIHost
         components.path = FivePxConstants.General.APIPath + (withPathExtension ?? "")
         
         if !parameters.isEmpty {
-            components.queryItems = [NSURLQueryItem]()
+            components.queryItems = [URLQueryItem]()
         }
         
         for (key, value) in parameters {
-            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            let queryItem = URLQueryItem(name: key, value: "\(value)")
             components.queryItems!.append(queryItem)
         }
         
-        return components.URL!
+        return components.url!
     }
     
-    private func FivePxURL() -> NSURL {
+    fileprivate func FivePxURL() -> URL {
         
-        let components = NSURLComponents()
+        var components = URLComponents()
         components.scheme = FivePxConstants.General.APIScheme
         components.host = FivePxConstants.General.APIHost
         components.path = FivePxConstants.General.APIPath
         
-        return components.URL!
+        return components.url!
     }
     
-    private func setNetworkActivityIndicator(enabled: Bool) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = enabled
+    fileprivate func setNetworkActivityIndicator(_ enabled: Bool) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = enabled
     }
     
     override init() {

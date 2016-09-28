@@ -32,46 +32,46 @@ class PopularViewController: UIViewController {
         configureRefreshControl()
         
         downloadPosts(1)
-        self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.imageWithRenderingMode(.AlwaysOriginal)
-        self.tabBarItem.image = UIImage(named: "star")!.imageWithRenderingMode(.AlwaysOriginal)
+        self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.withRenderingMode(.alwaysOriginal)
+        self.tabBarItem.image = UIImage(named: "star")!.withRenderingMode(.alwaysOriginal)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
         
         collectionView?.collectionViewLayout.invalidateLayout()
     }
     
-    func showAlert(error: NSError) {
+    func showAlert(_ error: Error) {
         let localDesc = error.localizedDescription
         
-        let alertController = UIAlertController(title: "Error", message: localDesc, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Error", message: localDesc, preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    func downloadPosts(page: Int) {
-        nsfwButton.enabled = false
+    func downloadPosts(_ page: Int) {
+        nsfwButton.isEnabled = false
         client.getPostsWithFeature(feature, page: page, allowNSFW: nsfwMode) { (success, error) in
             if success {
                 self.totalPages = self.client.totalPages
                 self.posts = self.client.fivePxPosts
                 self.refreshControl?.endRefreshing()
-                self.nsfwButton.enabled = true
+                self.nsfwButton.isEnabled = true
                 self.collectionView.reloadData()
             } else {
                 if let error = error {
                     self.showAlert(error)
-                    self.nsfwButton.enabled = true
+                    self.nsfwButton.isEnabled = true
                     self.refreshControl?.endRefreshing()
                 }
             }
@@ -88,7 +88,7 @@ class PopularViewController: UIViewController {
                          FivePxConstants.ParameterValues.Feature.FreshYesterday,
                          FivePxConstants.ParameterValues.Feature.FreshWeek]
         
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Popular", items: items)
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Popular", items: items as [AnyObject])
         
         menuView.didSelectItemAtIndexHandler = { [weak self] (indexPath: Int) -> () in
             self!.feature = parameter[indexPath]
@@ -99,17 +99,17 @@ class PopularViewController: UIViewController {
         self.navigationItem.titleView = menuView
     }
     
-    @IBAction func nsfwButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func nsfwButtonTapped(_ sender: UIBarButtonItem) {
         if nsfwMode {
             nsfwMode = false
             nsfwButton.image = UIImage(named: "restrict")
-            nsfwButton.tintColor = UIColor.grayColor()
+            nsfwButton.tintColor = UIColor.gray
             let randomPage = createRandomPage()
             downloadPosts(randomPage)
         } else {
             nsfwMode = true
             nsfwButton.image = UIImage(named: "restrict_filled")
-            nsfwButton.tintColor = UIColor.redColor()
+            nsfwButton.tintColor = UIColor.red
             let randomPage = createRandomPage()
             downloadPosts(randomPage)
         }
@@ -123,8 +123,8 @@ class PopularViewController: UIViewController {
     func configureRefreshControl() {
         if self.refreshControl == nil {
             let refreshControl = UIRefreshControl()
-            refreshControl.tintColor = UIColor.grayColor()
-            refreshControl.addTarget(self, action: #selector(refreshForRefreshControl), forControlEvents: UIControlEvents.ValueChanged)
+            refreshControl.tintColor = UIColor.gray
+            refreshControl.addTarget(self, action: #selector(refreshForRefreshControl), for: UIControlEvents.valueChanged)
             collectionView.addSubview(refreshControl)
             collectionView.alwaysBounceVertical = true
             self.refreshControl = refreshControl
@@ -152,23 +152,23 @@ class PopularViewController: UIViewController {
 }
 
 extension PopularViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return posts.count
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("photoCell", forIndexPath: indexPath) as! CollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! CollectionViewCell
         configurePhotoCell(cell, atIndexPath: indexPath)
         return cell
     }
     
-    func configurePhotoCell(cell: CollectionViewCell, atIndexPath indexPath: NSIndexPath) {
+    func configurePhotoCell(_ cell: CollectionViewCell, atIndexPath indexPath: IndexPath) {
         
         cell.imageView.image = nil
         
-        let postImageUrl = posts[indexPath.item].thumbnailUrl
-        let postImageID = posts[indexPath.item].id
-        let postImageTitle = posts[indexPath.item].name
+        let postImageUrl = posts[(indexPath as NSIndexPath).item].thumbnailUrl
+        let postImageID = posts[(indexPath as NSIndexPath).item].id
+        let postImageTitle = posts[(indexPath as NSIndexPath).item].name
         
         guard let image = realmClient.getThumbnailImage(fromID: postImageID) else {
             //no image found in realm, go download it and set it to the imageview
@@ -177,7 +177,7 @@ extension PopularViewController: UICollectionViewDelegate, UICollectionViewDataS
                 if success {
                     //create a realm object with the image data downloaded
                     if let data = data {
-                        self.realmClient.saveThumbnailData(withId: postImageID, data: data, title: postImageTitle)
+                        self.realmClient.saveThumbnailData(withId: postImageID, data: data as NSData, title: postImageTitle)
                         cell.loadingIndicator.stopAnimating()
                     }
                 } else {
@@ -191,11 +191,11 @@ extension PopularViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.imageView.image = image
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        collectionView.deselectItemAtIndexPath(indexPath, animated: false)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: false)
         
-        let detailVC = self.storyboard?.instantiateViewControllerWithIdentifier("PhotoDetailViewController") as! PhotoDetailViewController
-        detailVC.post = posts[indexPath.item]
+        let detailVC = self.storyboard?.instantiateViewController(withIdentifier: "PhotoDetailViewController") as! PhotoDetailViewController
+        detailVC.post = posts[(indexPath as NSIndexPath).item]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -204,7 +204,7 @@ extension PopularViewController: UICollectionViewDelegate, UICollectionViewDataS
 
 extension PopularViewController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let spacing: CGFloat = 1
         let itemWidth = (view.bounds.size.width / 2) - (spacing / 2)
         let itemHeight = itemWidth
