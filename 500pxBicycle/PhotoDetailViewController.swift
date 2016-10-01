@@ -41,12 +41,12 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         guard let postId = post?.id else {
             if let integerId = id {
                 realmClient.purgeImageFromRealm(withId: integerId)
-                self.navigationController?.popViewController(animated: true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
             return
         }
         realmClient.purgeImageFromRealm(withId: postId)
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func configureUI() {
