@@ -146,18 +146,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rAN-TR-fWk"/>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y2s-MV-dWM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y2s-MV-dWM">
+                                <frame key="frameInset" minY="64" width="375" height="554"/>
                                 <subviews>
-                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-3t-9TN"/>
+                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ilf-3t-9TN">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstItem="Ilf-3t-9TN" firstAttribute="centerY" secondItem="y2s-MV-dWM" secondAttribute="centerY" id="2c9-Zw-Bkz"/>
-                                    <constraint firstItem="Ilf-3t-9TN" firstAttribute="centerX" secondItem="y2s-MV-dWM" secondAttribute="centerX" id="4Qw-z8-9rN"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ilf-3t-9TN" secondAttribute="trailing" id="MhE-1X-J6j"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ilf-3t-9TN" secondAttribute="bottom" id="e3C-NQ-oSx"/>
-                                    <constraint firstItem="Ilf-3t-9TN" firstAttribute="top" secondItem="y2s-MV-dWM" secondAttribute="top" id="nHW-cl-ktI"/>
-                                    <constraint firstItem="Ilf-3t-9TN" firstAttribute="leading" secondItem="y2s-MV-dWM" secondAttribute="leading" id="yIe-Nj-f3e"/>
-                                </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,8 +171,6 @@
                     <connections>
                         <outlet property="activityIndicator" destination="rAN-TR-fWk" id="LBa-Lv-jGy"/>
                         <outlet property="imageView" destination="Ilf-3t-9TN" id="0VS-T6-oK9"/>
-                        <outlet property="imageViewLeadingConstraint" destination="yIe-Nj-f3e" id="eh0-ga-ENH"/>
-                        <outlet property="imageViewTopConstraint" destination="nHW-cl-ktI" id="gB8-IR-Fyn"/>
                         <outlet property="scrollView" destination="y2s-MV-dWM" id="U0Q-RX-Wut"/>
                     </connections>
                 </viewController>
@@ -220,7 +214,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KdJ-cc-a9e" id="BHg-G9-doV">
-                                            <frame key="frameInset" width="375" height="99.5"/>
+                                            <frame key="frameInset" width="375" height="99"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UAa-Oo-2dM">

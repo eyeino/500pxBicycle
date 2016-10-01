@@ -430,7 +430,7 @@
 				INFOPLIST_FILE = 500pxBicycle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ian.-00pxBicycle";
+				PRODUCT_BUNDLE_IDENTIFIER = "ian.-500pxBicycle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -445,7 +445,7 @@
 				INFOPLIST_FILE = 500pxBicycle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "ian.-00pxBicycle";
+				PRODUCT_BUNDLE_IDENTIFIER = "ian.-500pxBicycle";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
