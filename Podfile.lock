@@ -1,26 +1,36 @@
 PODS:
-  - Alamofire (3.4.1)
+  - Alamofire (4.0.1)
   - BTNavigationDropdownMenu (0.4.1)
-  - Freddy (2.1.0)
-  - Realm (1.0.2):
-    - Realm/Headers (= 1.0.2)
-  - Realm/Headers (1.0.2)
-  - RealmSwift (1.0.2):
-    - Realm (= 1.0.2)
+  - Freddy (3.0.0)
+  - Realm (2.0.0):
+    - Realm/Headers (= 2.0.0)
+  - Realm/Headers (2.0.0)
+  - RealmSwift (2.0.0):
+    - Realm (= 2.0.0)
 
 DEPENDENCIES:
   - Alamofire
-  - BTNavigationDropdownMenu
+  - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
   - Freddy
   - RealmSwift
 
-SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  BTNavigationDropdownMenu: '093f3cbfad1572f2c222bdf8d17584d1e13380d4'
-  Freddy: bbdca013977db29638b24baf6572ce94452bec29
-  Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
-  RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
+EXTERNAL SOURCES:
+  BTNavigationDropdownMenu:
+    :branch: swift-3.0
+    :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
 
-PODFILE CHECKSUM: 06e2a6d45a680d53e0aae6b5cacc6404c936f94b
+CHECKOUT OPTIONS:
+  BTNavigationDropdownMenu:
+    :commit: 2c08c8579cf7a53ecb3dbf578e6e1034080a9859
+    :git: https://github.com/PhamBaTho/BTNavigationDropdownMenu.git
+
+SPEC CHECKSUMS:
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  BTNavigationDropdownMenu: '093f3cbfad1572f2c222bdf8d17584d1e13380d4'
+  Freddy: 367f994c88a90dd3987293b4b1bec94a4530745a
+  Realm: 6dda421ae4b3e9a09742fc2cf4b876d459cbedcd
+  RealmSwift: 7d015f34a2781a50889be9b5a15c36c08597ea0e
+
+PODFILE CHECKSUM: 1638da4a3f2c84a26d27c6a9ef09055e92dd8175
 
 COCOAPODS: 1.0.1

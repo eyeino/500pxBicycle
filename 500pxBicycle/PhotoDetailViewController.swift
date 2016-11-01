@@ -37,30 +37,30 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         updateMinZoomScaleForSize(view.bounds.size)
     }
     
-    @IBAction override func delete(sender: AnyObject?) {
+    @IBAction override func delete(_ sender: Any?) {
         guard let postId = post?.id else {
             if let integerId = id {
                 realmClient.purgeImageFromRealm(withId: integerId)
-                self.navigationController?.popViewControllerAnimated(true)
+                _ = self.navigationController?.popViewController(animated: true)
             }
             return
         }
         realmClient.purgeImageFromRealm(withId: postId)
-        self.navigationController?.popViewControllerAnimated(true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     func configureUI() {
         self.scrollView.delegate = self
         
-        self.tabBarController?.tabBar.hidden = true
+        self.tabBarController?.tabBar.isHidden = true
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .Plain, target: self, action: #selector(PhotoDetailViewController.delete(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(PhotoDetailViewController.delete(_:)))
     }
     
     func setImageViewImage() {
         guard let postImageUrl = post?.imageUrl, let postImageID = post?.id else {
             //no valid post passed into view controller... see if id integer was passed in instead
-            if let id = id, image = realmClient.getBigImage(fromID: id) {
+            if let id = id, let image = realmClient.getBigImage(fromID: id) {
                 imageView.image = image
             }
             return
@@ -73,7 +73,7 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
                 if success {
                     //create a realm object with the image data downloaded
                     if let data = data {
-                        self.realmClient.updateImageData(withId: postImageID, data: data)
+                        self.realmClient.updateImageData(withId: postImageID, data: data as NSData)
                         self.activityIndicator.stopAnimating()
                     }
                 } else {
@@ -90,18 +90,18 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         imageView.image = image
     }
     
-    func showAlert(error: NSError) {
+    func showAlert(_ error: Error) {
         let localDesc = error.localizedDescription
         
-        let alertController = UIAlertController(title: "Error", message: localDesc, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Error", message: localDesc, preferredStyle: .alert)
         
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(defaultAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    private func updateMinZoomScaleForSize(size: CGSize) {
+    fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
         let widthScale = size.width / imageView.bounds.width
         let heightScale = size.height / imageView.bounds.height
         let minScale = min(widthScale, heightScale)
@@ -110,7 +110,7 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
         scrollView.zoomScale = minScale
     }
     
-    private func updateConstraintsForSize(size: CGSize) {
+    fileprivate func updateConstraintsForSize(_ size: CGSize) {
         
         let yOffset = max(0, (size.height - imageView.frame.height) / 2)
         imageViewTopConstraint.constant = yOffset
@@ -126,11 +126,11 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
 
 extension PhotoDetailViewController: UIScrollViewDelegate {
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
-    func scrollViewDidZoom(scrollView: UIScrollView) {
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
         updateConstraintsForSize(view.bounds.size)
     }
 }

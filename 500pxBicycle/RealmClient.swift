@@ -34,7 +34,7 @@ class RealmClient: NSObject {
     func getThumbnailImage(fromID id: Int) -> UIImage? {
         let dataFromObject = realm.objects(FivePxImage.self).filter("id == \(id)").first?.thumbnailData
         if let data = dataFromObject {
-            if let image = UIImage(data: data) {
+            if let image = UIImage(data: data as Data) {
                 return image
             }
         }
@@ -44,7 +44,7 @@ class RealmClient: NSObject {
     func getBigImage(fromID id: Int) -> UIImage? {
         let dataFromObject = realm.objects(FivePxImage.self).filter("id == \(id)").first?.imageData
         if let data = dataFromObject {
-            if let image = UIImage(data: data) {
+            if let image = UIImage(data: data as Data) {
                 return image
             }
         }
