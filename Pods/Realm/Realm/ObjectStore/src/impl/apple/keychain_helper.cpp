@@ -33,7 +33,7 @@ using realm::util::adoptCF;
 namespace realm {
 namespace keychain {
 
-KeychainAccessException::KeychainAccessException(size_t error_code)
+KeychainAccessException::KeychainAccessException(int32_t error_code)
 : std::runtime_error(util::format("Keychain returned unexpected status code: %1", error_code)) { }
 
 CFPtr<CFStringRef> convert_string(const std::string& string);
@@ -110,6 +110,6 @@ std::vector<char> metadata_realm_encryption_key()
     auto key_bytes = reinterpret_cast<const char *>(CFDataGetBytePtr(key_data.get()));
     return std::vector<char>(key_bytes, key_bytes + key_size);
 }
-    
+
 }
 }

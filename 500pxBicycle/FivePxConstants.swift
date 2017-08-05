@@ -15,8 +15,7 @@ struct FivePxConstants {
         static let APIScheme = "https"
         static let APIHost = "api.500px.com"
         static let APIPath = "/v1/"
-        static let APIEndpoint = FivePxConstants.General.APIScheme + "://" +
-                                 FivePxConstants.General.APIHost   +
+        static let APIEndpoint = FivePxConstants.General.APIScheme + "://" +              FivePxConstants.General.APIHost   +
                                  FivePxConstants.General.APIPath
     }
     

@@ -9,8 +9,8 @@
 import RealmSwift
 
 class FivePxImage: Object {
-    dynamic var id: Int = 0
-    dynamic var thumbnailData: NSData?
-    dynamic var imageData: NSData?
-    dynamic var title: String?
+    @objc dynamic var id: Int = 0
+    @objc dynamic var thumbnailData: NSData?
+    @objc dynamic var imageData: NSData?
+    @objc dynamic var title: String?
 }

@@ -27,13 +27,12 @@ class PopularViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         configureDropDownMenu()
         configureRefreshControl()
         
         downloadPosts(1)
-        self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.withRenderingMode(.alwaysOriginal)
-        self.tabBarItem.image = UIImage(named: "star")!.withRenderingMode(.alwaysOriginal)
+        configureTabBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,7 +114,7 @@ class PopularViewController: UIViewController {
         }
     }
     
-    func refreshForRefreshControl() {
+    @objc func refreshForRefreshControl() {
         let randomPage = createRandomPage()
         downloadPosts(randomPage)
     }
@@ -129,6 +128,11 @@ class PopularViewController: UIViewController {
             collectionView.alwaysBounceVertical = true
             self.refreshControl = refreshControl
         }
+    }
+    
+    func configureTabBar() {
+        self.tabBarItem.selectedImage = UIImage(named: "star_filled")!.withRenderingMode(.alwaysOriginal)
+        self.tabBarItem.image = UIImage(named: "star")!.withRenderingMode(.alwaysOriginal)
     }
     
     func createRandomPage() -> Int {

@@ -8,7 +8,7 @@ target '500pxBicycle' do
 
   # Pods for 500pxBicycle
   pod 'Alamofire'
-  pod 'Freddy'
+  pod ‘Freddy’
   pod 'RealmSwift'
   pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
 end
