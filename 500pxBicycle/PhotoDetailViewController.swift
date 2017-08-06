@@ -50,7 +50,7 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func configureUI() {
-        self.scrollView.delegate = self
+//        self.scrollView.delegate = self
         
         self.tabBarController?.tabBar.isHidden = true
         
@@ -124,13 +124,13 @@ class PhotoDetailViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-extension PhotoDetailViewController: UIScrollViewDelegate {
-    
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return imageView
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        updateConstraintsForSize(view.bounds.size)
-    }
-}
+//extension PhotoDetailViewController: UIScrollViewDelegate {
+//    
+//    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+//        return imageView
+//    }
+//    
+//    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+//        updateConstraintsForSize(view.bounds.size)
+//    }
+//}
