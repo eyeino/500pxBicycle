@@ -87,7 +87,9 @@ class PopularViewController: UIViewController {
                          FivePxConstants.ParameterValues.Feature.FreshYesterday,
                          FivePxConstants.ParameterValues.Feature.FreshWeek]
         
-        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Popular", items: items as [AnyObject])
+        let containerView = self.navigationController!.view!
+        
+        let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: containerView, title: "Popular", items: items)
         
         menuView.didSelectItemAtIndexHandler = { [weak self] (indexPath: Int) -> () in
             self!.feature = parameter[indexPath]

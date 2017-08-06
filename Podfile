@@ -8,9 +8,9 @@ target '500pxBicycle' do
 
   # Pods for 500pxBicycle
   pod 'Alamofire'
-  pod ‘Freddy’
+  pod 'Freddy'
   pod 'RealmSwift'
-  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'swift-3.0'
+  pod 'BTNavigationDropdownMenu', :git => 'https://github.com/PhamBaTho/BTNavigationDropdownMenu.git', :branch => 'master'
 end
 
 post_install do |installer|
